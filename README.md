@@ -1,5 +1,7 @@
 # covid_visualizations
 
+These scripts refrence Covid-19 data from the New York Times repository. I have attached us-counties.csv which is a version of the New York Times data from mid-January 2021. To get the most acurate vizualizations, download the New York Times data yourself from *https://github.com/nytimes/covid-19-data*.
+
 
 Two_or_more_counties.py: 
 Creates a Matplotlib data visualization comparing multiple **counties** new daily Covid-19 cases.
