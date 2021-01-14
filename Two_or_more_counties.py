@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 from pprint import pprint
 import matplotlib.pyplot as plt
-from scipy import integrate
 
 
 def countrygraph(places):
@@ -12,15 +11,12 @@ def countrygraph(places):
 	"MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico",
 	"NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota",
 	"TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"}
-	#print(statedict['NJ'])
+
 
 	statelist=[places[i][1] for i in range(len(places))]
 	
 	countylist=[places[i][0] for i in range(len(places))]
 
-
-	print(statelist)
-	print(countylist)
 
 
 	finalstatelist=[]
@@ -41,7 +37,6 @@ def countrygraph(places):
 
 		finalstatelist.append(state)
 
-	print(finalstatelist)
 	
 
 	#state1=finalstatelist[0]
@@ -55,12 +50,9 @@ def countrygraph(places):
 	timeorder=[]
 	indexorder=[]
 	for i in range(len(dict_of_df)):
-		#dict_of_df[df]=((dict_of_df[df][dict_of_df[df]['state']==finalstatelist[i]]))
 		dict_of_df[f'df_{i}']=dict_of_df[f'df_{i}'][dict_of_df[f'df_{i}']['state']==finalstatelist[i]]
 		dict_of_df[f'df_{i}']=dict_of_df[f'df_{i}'][dict_of_df[f'df_{i}']['county']==countylist[i]]
-		#dict_of_df[f'df_{i}'].apply(lambda g: integrate.trapz(g.diff, x=g.date))
 
-		#scipy.integrate(dict_of_df[f'df_{i}']['cases'])
 
 		dict_of_df[f'df_{i}']=(dict_of_df[f'df_{i}'].groupby('date').sum())
 		dict_of_df[f'df_{i}']=dict_of_df[f'df_{i}'].drop(['fips','deaths'], axis=1)
